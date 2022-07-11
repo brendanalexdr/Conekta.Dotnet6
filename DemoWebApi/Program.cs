@@ -1,3 +1,4 @@
+using System.Text.Json;
 using TestWebApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +7,14 @@ bool isDevelopment = builder.Environment.IsDevelopment();
 IConfiguration appConfig = builder.Configuration;
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.AllowTrailingCommas = true;
+        options.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+    });
+
 builder.Services.AddConektaAssets(isDevelopment, appConfig);
 
 builder.Services.AddEndpointsApiExplorer();

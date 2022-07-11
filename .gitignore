@@ -397,5 +397,7 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-TestWebApi/appsettings.json
-TestWebApi/appsettings.Development.json
+**/TestWebApi/appsettings.json
+**/TestWebApi/appsettings.development.json
+**/TestWebApi/appsettings.staging.json
+**/TestWebApi/appsettings.production.json

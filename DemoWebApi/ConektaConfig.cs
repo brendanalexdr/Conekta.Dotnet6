@@ -9,13 +9,16 @@ public static class ConektaConfig
         IConfiguration appConfig)
     {
 
-
-        var privateKey = new ConektaPrivateKey("private_key");
+        var conektaPrivateKeyValue = appConfig["ConektaKeys:Prod"];
+       
+        if (isDevelopment)
+        {
+            conektaPrivateKeyValue = appConfig["ConektaKeys:Dev"];
+        }
+        var privateKey = new ConektaPrivateKey(conektaPrivateKeyValue);
 
         services.AddSingleton(privateKey);
         services.AddSingleton<IConektaRestClientService>(new ConektaRestClientService());
-
-        
 
         return services;
     }
