@@ -11,7 +11,6 @@ public static class ConektaSerializer
         byte[] byteArray = System.Text.Encoding.ASCII.GetBytes(json);
         MemoryStream stream = new MemoryStream(byteArray);
 
-
         T obj = await JsonSerializer.DeserializeAsync<T>(stream, new JsonSerializerOptions
         {
 
