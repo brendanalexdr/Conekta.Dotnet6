@@ -7,12 +7,12 @@ namespace Conekta.Dotnet6.Util;
 // It is recommended that the RestClient be used as a Singleton  
 // https://restsharp.dev/usage.html#api-client
 
-public class ConektaRestClientService : IConektaRestClientService
+public class ConektaRestClient : IConektaRestClient
 {
     private string baseUri = "https://api.conekta.io";
     private RestClient _client;
 
-    public ConektaRestClientService()
+    public ConektaRestClient()
     {
 
         var client = new RestClient(baseUri);

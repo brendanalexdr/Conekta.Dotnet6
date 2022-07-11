@@ -18,7 +18,7 @@ if (isDevelopment)
 var privateKey = new ConektaPrivateKey(conektaPrivateKeyValue);
 
 builder.Services.AddSingleton<ConektaPrivateKey>(privateKey);
-builder.Services.AddSingleton<IConektaRestClientService>(new ConektaRestClientService());
+builder.Services.AddSingleton<IConektaRestClient>(new ConektaRestClient());
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>

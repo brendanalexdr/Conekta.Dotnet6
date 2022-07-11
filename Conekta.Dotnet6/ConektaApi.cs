@@ -9,13 +9,13 @@ namespace Conekta.Dotnet6;
 
 public class ConektaApi
 {
-    private IConektaRestClientService _client;
+    private IConektaRestClient _client;
     private string version;
     private string locale;
     private string apiKey;
 
 
-    public ConektaApi(string locale, string apiKey, IConektaRestClientService conektaRestClient)
+    public ConektaApi(string locale, string apiKey, IConektaRestClient conektaRestClient)
     {
         this.apiKey = apiKey;
         this.version = "2.0.0";

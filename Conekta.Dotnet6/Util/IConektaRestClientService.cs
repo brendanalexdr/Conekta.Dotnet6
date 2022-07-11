@@ -2,7 +2,7 @@
 
 namespace Conekta.Dotnet6.Util
 {
-    public interface IConektaRestClientService
+    public interface IConektaRestClient
     {
         RestClient GetClient();
     }
