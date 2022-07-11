@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Conekta.Dotnet6.Util;
+namespace DemoWebApi.Config;
 
 public class ConektaPrivateKey
 {

@@ -1,4 +1,5 @@
 using Conekta.Dotnet6.Util;
+using DemoWebApi.Config;
 using System.Text.Json;
 using TestWebApi;
 
@@ -6,8 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 bool isDevelopment = builder.Environment.IsDevelopment();
 IConfiguration appConfig = builder.Configuration;
-var conektaPrivateKeyValue = appConfig["ConektaKeys:Prod"];
 
+
+// conekta private keys, for prod and dev, stored in appsettings.json
+var conektaPrivateKeyValue = appConfig["ConektaKeys:Prod"];
 if (isDevelopment)
 {
     conektaPrivateKeyValue = appConfig["ConektaKeys:Dev"];
@@ -16,7 +19,6 @@ var privateKey = new ConektaPrivateKey(conektaPrivateKeyValue);
 
 builder.Services.AddSingleton<ConektaPrivateKey>(privateKey);
 builder.Services.AddSingleton<IConektaRestClientService>(new ConektaRestClientService());
-
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -29,7 +31,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
 
 if (isDevelopment)
 {
