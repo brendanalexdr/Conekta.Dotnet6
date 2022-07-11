@@ -1,17 +1,33 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
-    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
     <Authors>Brendan Alexander</Authors>
     <Company>Eventec</Company>
+    <Description>Conekta Api for .NET 6 using the native System.Text.Json</Description>
+    <PackageProjectUrl>https://github.com/brendanalexdr/Conekta.Dotnet6</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/brendanalexdr/Conekta.Dotnet6</RepositoryUrl>
+    <PackageTags>conekta</PackageTags>
+    <Version>1.1.1</Version>
+    <FileVersion>1.2.0</FileVersion>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<PackageReleaseNotes>Admin edits</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CSharpFunctionalExtensions" Version="2.31.0" />
     <PackageReference Include="RestSharp" Version="108.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
