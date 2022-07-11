@@ -10,9 +10,8 @@ IConfiguration appConfig = builder.Configuration;
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
         options.JsonSerializerOptions.AllowTrailingCommas = true;
-        options.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+
     });
 
 builder.Services.AddConektaAssets(isDevelopment, appConfig);
