@@ -1,5 +1,5 @@
 # Conekta.Dotnet6
-Conekta Api for .net 6 using native System.Text.Json
+Conekta Api for .net 6 using the native System.Text.Json
 
 This package is for you if:
 - You are implementing the [Conekta payment Api](https://developers.conekta.com/reference/autenticaci%C3%B3n) on a backend running .net 6
