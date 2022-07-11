@@ -25,8 +25,6 @@ builder.Services.AddControllers()
 
     });
 
-builder.Services.AddConektaAssets(isDevelopment, appConfig);
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
