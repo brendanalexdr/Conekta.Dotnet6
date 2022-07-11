@@ -129,21 +129,6 @@ public class ConektaApi
         return Result.Success<List<Models.Customer>, ConektaException>(customers);
 
     }
-    public async Task<Result> DeleteCustomerAsync(string conektaCustomerId)
-    {
-
-        var request = this.GetRestRequest(Method.Delete, $"customers/{conektaCustomerId}");
-        var response = await this.GetClient().ExecuteAsync(request);
-        var obj = ConektaSerializer.ToJsonDocument(response.Content);
-        var type = obj.RootElement.GetProperty("object").ToString();
-        if (type == "error")
-        {
-            var ex = await GetConektaExceptionAsync(response.Content);
-            return Result.Failure(ex.message);
-        }
-
-        return Result.Success();
-    }
     public async Task<Result<Models.Customer, ConektaException>> CreateCustomerAsync(Models.Customer newCust)
     {
 
@@ -161,8 +146,22 @@ public class ConektaApi
         var custResponse = await ConektaSerializer.DeserializeAsync<Conekta.Dotnet6.Response.Customer>(response.Content);
         var cust = custResponse.GetCustomer();
         return Result.Success<Models.Customer, ConektaException>(cust);
+    }
 
+    public async Task<Result> DeleteCustomerAsync(string conektaCustomerId)
+    {
 
+        var request = this.GetRestRequest(Method.Delete, $"customers/{conektaCustomerId}");
+        var response = await this.GetClient().ExecuteAsync(request);
+        var obj = ConektaSerializer.ToJsonDocument(response.Content);
+        var type = obj.RootElement.GetProperty("object").ToString();
+        if (type == "error")
+        {
+            var ex = await GetConektaExceptionAsync(response.Content);
+            return Result.Failure(ex.message);
+        }
+
+        return Result.Success();
     }
 
     // PAYMENT SOURCES
@@ -211,6 +210,8 @@ public class ConektaApi
         return Result.Success<Models.PaymentLink, ConektaException>(paymentLinkResponse);
 
     }
+
+    // --------------------
 
     private RestRequest GetRestRequest(RestSharp.Method method, string url)
     {
