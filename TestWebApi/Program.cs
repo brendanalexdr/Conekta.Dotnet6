@@ -1,16 +1,21 @@
+using TestWebApi;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+bool isDevelopment = builder.Environment.IsDevelopment();
+IConfiguration appConfig = builder.Configuration;
+
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddConektaAssets(isDevelopment, appConfig);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline...
-if (app.Environment.IsDevelopment())
+
+if (isDevelopment)
 {
     app.UseSwagger();
     app.UseSwaggerUI();
