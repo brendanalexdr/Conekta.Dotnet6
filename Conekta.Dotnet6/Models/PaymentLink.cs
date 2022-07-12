@@ -2,6 +2,7 @@
 
 public class PaymentLink
 {
+    public string id { get; set; }
     public string name { get; set; }
 
     public bool recurrent { get; set; }

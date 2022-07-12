@@ -9,8 +9,8 @@ public class Webhook : IConektaObject
     public string type { get; set; }
     public string @object { get; set; }
     public bool livemode { get; set; }
-    public double created_at { get; set; }
-    public double updated_at { get; set; }
+    public int created_at { get; set; }
+    public int updated_at { get; set; }
     public string webhook_status { get; set; }
     public List<WebhookLog> webhook_logs { get; set; }
     public WebhookData data { get; set; }

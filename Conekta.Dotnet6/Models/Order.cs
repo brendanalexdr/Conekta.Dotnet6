@@ -17,5 +17,7 @@ public class Order
     public JsonDocument metadata { get; set; }
     public bool pre_authorize { get; set; }
     public string order_id { get; set; }
-    public double paid_at { get; set; }
+    public int paid_at { get; set; }
+    public int created_at { get; set; }
+
 }

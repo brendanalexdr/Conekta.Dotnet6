@@ -6,6 +6,6 @@ public interface IConektaObject
     public string type { get; }
     public string @object { get; }
     public bool livemode { get; }
-    public double created_at { get; }
-    public double updated_at { get; }
+    public int created_at { get; }
+    public int updated_at { get; }
 }

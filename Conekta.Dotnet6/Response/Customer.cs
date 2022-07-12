@@ -12,9 +12,9 @@ namespace Conekta.Dotnet6.Response
 
         public bool livemode { get; set; }
 
-        public double created_at { get; set; }
+        public int created_at { get; set; }
 
-        public double updated_at { get; set; }
+        public int updated_at { get; set; }
 
         public new Conekta.Dotnet6.Response.PaymentSources payment_sources { get; set; }
 

@@ -191,6 +191,36 @@ public class ConektaApi
         return Result.Success<Models.PaymentSource, ConektaException>(paymentSource);
     }
 
+    // CHARGES
+
+    public async Task<Result<Models.Charge, ConektaException>> CreateChargeAsync(Models.Charge charge, string conektaOrderId)
+    {
+        var request = this.GetRestRequest(Method.Post, $"orders/{conektaOrderId}/charges");
+        request.AddJsonBody(charge);
+        var response = await this.GetClient().ExecuteAsync(request);
+        var jsonDoc = ConektaSerializer.ToJsonDocument(response.Content);
+        var type = jsonDoc.RootElement.GetProperty("object").ToString();
+        if (type == "error")
+        {
+            var ex = await GetConektaExceptionAsync(response.Content);
+            return Result.Failure<Models.Charge, ConektaException>(ex);
+
+        }
+        Models.Charge conektaCharge;
+        try
+        {
+            conektaCharge = await ConektaSerializer.DeserializeAsync<Models.Charge>(response.Content);
+        }
+        catch (Exception ex)
+        {
+
+            return Result.Failure<Models.Charge, ConektaException>(new Models.ConektaException(ex.Message));
+        }
+
+        return Result.Success<Models.Charge, ConektaException>(conektaCharge);
+    }
+
+
 
     // PAYMENT LINK
     public async Task<Result<Models.PaymentLink, ConektaException>> CreatePaymentLinkAsync(Models.PaymentLink paymentLink)
@@ -206,7 +236,7 @@ public class ConektaApi
             var ex = await GetConektaExceptionAsync(response.Content);
             return Result.Failure<Models.PaymentLink, ConektaException>(ex);
         }
-        var paymentLinkResponse = await ConektaSerializer.DeserializeAsync<Response.PaymentLink>(response.Content);
+        var paymentLinkResponse = await ConektaSerializer.DeserializeAsync<Models.PaymentLink>(response.Content);
         return Result.Success<Models.PaymentLink, ConektaException>(paymentLinkResponse);
 
     }

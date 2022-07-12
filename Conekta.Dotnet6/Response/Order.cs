@@ -9,13 +9,13 @@ namespace Conekta.Dotnet6.Response
         public string type { get; set; }
         public string @object { get; set; }
         public bool livemode { get; set; }
-        public double created_at { get; set; }
-        public double updated_at { get; set; }
-        public LineItems line_items { get; set; }
-        public Charges charges { get; set; }
-        public Returns returns { get; set; }
-        public Customer customer_info { get; set; }
-        public JsonDocument shipping_lines { get; set; }
+        public int created_at { get; set; }
+        public int updated_at { get; set; }
+        new public LineItems line_items { get; set; }
+        new public Charges charges { get; set; }
+        new public Returns returns { get; set; }
+        new public Customer customer_info { get; set; }
+        new public JsonDocument shipping_lines { get; set; }
 
         public Models.Order GetOrder()
         {
@@ -46,7 +46,8 @@ namespace Conekta.Dotnet6.Response
                 line_items = _lineItms,
                 charges = _charges,
                 customer_info = this.customer_info.GetCustomer(),
-                returns = _returns
+                returns = _returns,
+                created_at = this.created_at
             };
    
             return ord;
