@@ -3,7 +3,6 @@ using Conekta.Dotnet6.Util;
 using CSharpFunctionalExtensions;
 using RestSharp;
 using System.Text;
-using System.Text.Json;
 
 namespace Conekta.Dotnet6;
 
