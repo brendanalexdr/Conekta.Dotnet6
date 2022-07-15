@@ -2,7 +2,6 @@
 using Conekta.Dotnet6.Util;
 using DemoWebApi.Config;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection;
 
 namespace TestWebApi.Controllers
 {
