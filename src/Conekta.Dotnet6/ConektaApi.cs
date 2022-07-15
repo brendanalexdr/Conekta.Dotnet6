@@ -11,12 +11,12 @@ public class ConektaApi
     private IConektaRestClient _client;
     private string version;
     private string locale;
-    private string apiKey;
+    private string apiKeyBase64;
 
 
     public ConektaApi(string locale, string apiKey, IConektaRestClient conektaRestClient)
     {
-        this.apiKey = apiKey;
+        this.apiKeyBase64 = GetBase64String(apiKey);
         this.version = "2.0.0";
         this.locale = locale;
         _client = conektaRestClient;
@@ -247,7 +247,7 @@ public class ConektaApi
         var request = new RestRequest(url, method);
         request.AddHeader("Content-Type", "application/json");
         request.AddHeader("Accept", "application/vnd.conekta-v" + version + "+json");
-        request.AddHeader("Authorization", "Basic " + GetBase64String(apiKey) + ":");
+        request.AddHeader("Authorization", "Basic " + apiKeyBase64 + ":");
         request.AddHeader("Accept-Language", locale);
      
         return request;
