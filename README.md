@@ -55,7 +55,7 @@ if (customer.IsFailure)
      return Content(customer.Error.message);
    }
 
-// customer.Value will be the Customer class
+// If the api call is successful, customer.Value will be the Customer class
 return Json(customer.Value);
 ```
 Full example [here](https://github.com/brendanalexdr/Conekta.Dotnet6/blob/main/src/DemoWebApi/Controllers/HomeController.cs)
