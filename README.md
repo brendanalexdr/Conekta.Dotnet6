@@ -51,11 +51,11 @@ var conektaApi = new ConektaApi("en", "your_conekta_private_key", _conektaRestCl
 Result<ConektaModels.Customer, ConektaModels.ConektaException> customer = await conektaApi.GetCustomerAsync(id);
 if (customer.IsFailure)
    {
-     // Error will be the Conekta Exception class
+     // Error will be the  [Conekta Exception class](https://github.com/brendanalexdr/Conekta.Dotnet6/blob/main/src/Conekta.Dotnet6/Models/ConektaException.cs)
      return Content(customer.Error.message);
    }
 
-// customer.Value will be the Customer class
+// customer.Value will be the [Customer class](https://github.com/brendanalexdr/Conekta.Dotnet6/blob/main/src/Conekta.Dotnet6/Models/Customer.cs)
 return Json(customer.Value);
 ```
 Full example [here](https://github.com/brendanalexdr/Conekta.Dotnet6/blob/main/src/DemoWebApi/Controllers/HomeController.cs)
