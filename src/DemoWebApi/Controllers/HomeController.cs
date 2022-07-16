@@ -23,7 +23,7 @@ namespace TestWebApi.Controllers
 
             var conektaApi = new ConektaApi("en", _conektaPrivateKey.Value, _conektaRestClient);
             
-            Result<ConektaModels.Customer, ConektaModels.ConektaException> customer = await conektaApi.GetCustomerAsync(id);
+            var customer = await conektaApi.GetCustomerAsync(id);
 
             if (customer.IsFailure)
             {
