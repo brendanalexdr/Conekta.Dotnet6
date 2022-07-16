@@ -38,7 +38,7 @@ builder.Services.AddControllers()
 
     });
 ```
-## API Examples
+## API Example
 ### Get Customer 
 ```csharp
 using Conekta.Dotnet6;
