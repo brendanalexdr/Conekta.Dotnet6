@@ -1,8 +1,6 @@
 ﻿using Conekta.Dotnet6;
-using ConektaModels = Conekta.Dotnet6.Models;
 using DemoWebApi.Config;
 using Microsoft.AspNetCore.Mvc;
-using CSharpFunctionalExtensions;
 
 namespace TestWebApi.Controllers
 {
@@ -27,6 +25,11 @@ namespace TestWebApi.Controllers
 
             if (customer.IsFailure)
             {
+                // the details list will often have a list of errors
+                foreach(var err in customer.Error.details)
+                {
+                    Console.WriteLine(err);
+                }
                 return Content(customer.Error.message);
             }
 
