@@ -1,6 +1,8 @@
 ﻿using Conekta.Dotnet6;
+using ConektaModels = Conekta.Dotnet6.Models;
 using DemoWebApi.Config;
 using Microsoft.AspNetCore.Mvc;
+using CSharpFunctionalExtensions;
 
 namespace TestWebApi.Controllers
 {
@@ -21,8 +23,7 @@ namespace TestWebApi.Controllers
 
             var conektaApi = new ConektaApi("en", _conektaPrivateKey.Value, _conektaRestClient);
             
-            Results<Conekta.Dotnet6.Models.Customer, 
-                > customer = await conektaApi.GetCustomerAsync(id);
+            Result<ConektaModels.Customer, ConektaModels.ConektaException> customer = await conektaApi.GetCustomerAsync(id);
 
             if (customer.IsFailure)
             {
