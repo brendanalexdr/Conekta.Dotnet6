@@ -1,19 +1,38 @@
-﻿namespace Conekta.Dotnet6.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace Conekta.Dotnet6.Models;
 
 public class PaymentSource
 {
-    public string id { get; set; }
-    public string type { get; set; }
+    [JsonPropertyName("id")]
+    public string Id { get; set; }
 
-    /* In case card token */
-    public string token_id { get; set; }
+    [JsonPropertyName("type")]
+    public string Type { get; set; }
 
-    /* In case card object*/
-    public string name { get; set; }
-    public string number { get; set; }
-    public string exp_month { get; set; }
-    public string exp_year { get; set; }
-    public string cvc { get; set; }
-    public Address address { get; set; }
-    public string parent_id { get; set; }
+    [JsonPropertyName("token_id")]
+    public string TokenId { get; set; }
+
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+
+    [JsonPropertyName("number")]
+    public string Number { get; set; }
+
+    [JsonPropertyName("exp_month")]
+    public string ExpMonth { get; set; }
+
+    [JsonPropertyName("exp_year")]
+    public string ExpYear { get; set; }
+
+    [JsonPropertyName("cvc")]
+    public string Cvc { get; set; }
+
+    [JsonPropertyName("address")]
+
+    public Address Address { get; set; }
+
+    [JsonPropertyName("parent_id")]
+
+    public string ParentId { get; set; }
 }

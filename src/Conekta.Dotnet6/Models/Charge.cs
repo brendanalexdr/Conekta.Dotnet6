@@ -1,23 +1,61 @@
-﻿namespace Conekta.Dotnet6.Models
+﻿using Conekta.Dotnet6.Values;
+using System.Text.Json.Serialization;
+
+namespace Conekta.Dotnet6.Models
 {
 
     public class Charge
     {
-        public string id { get; set; }
-        public bool livemode { get; set; }
-        public int created_at { get; set; }
-        public string currency { get; set; }
-        public int amount { get; set; }
-        public string parent_id { get; set; }
-        public PaymentMethod payment_method { get; set; }
-        public string @object { get; set; }
-        public string description { get; set; }
-        public string status { get; set; }
-        public int paid_at { get; set; }
-        public int fee { get; set; }
-        public string customer_id { get; set; }
-        public string order_id { get; set; }
-        public string reference_id { get; set; }
+        [JsonPropertyName("id")]
+        public string Id { get; set; }
+
+        [JsonPropertyName("created_at")]
+        public UnixTimestamp CreatedAt { get; set; }
+
+        [JsonPropertyName("currency")]
+        public string Currency { get; set; }
+
+        [JsonPropertyName("amount")]
+        public ConektaAmount Amount { get; set; }
+
+        [JsonPropertyName("parent_id")]
+        public string ParentId { get; set; }
+
+        [JsonPropertyName("payment_method")]
+        public PaymentMethod PaymentMethod { get; set; }
+
+        [JsonPropertyName("description")]
+        public string Description { get; set; }
+
+        [JsonPropertyName("status")]
+        public string Status { get; set; }
+
+        [JsonPropertyName("paid_at")]
+        public UnixTimestamp PaidAt { get; set; }
+
+        [JsonPropertyName("fee")]
+        public ConektaAmount Fee { get; set; }
+
+        [JsonPropertyName("customer_id")]
+        public string CustomerId { get; set; }
+
+        [JsonPropertyName("order_id")]
+        public string OrderId { get; set; }
+
+        [JsonPropertyName("reference_id")]
+        public string ReferenceId { get; set; }
+
+        [JsonIgnore]
+        public bool IsPaid
+        {
+
+            get
+            {
+
+                return Status == "paid";
+
+            }
+        }
 
     }
 }

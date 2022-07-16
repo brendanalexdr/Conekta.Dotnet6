@@ -1,23 +1,55 @@
-﻿using System.Text.Json;
+﻿using Conekta.Dotnet6.Values;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Conekta.Dotnet6.Models;
 
 public class Order
 {
-    public string id { get; set; }
-    public int amount { get; set; }
-    public string currency { get; set; }
-    public string payment_status { get; set; }
-    public List<LineItem> line_items { get; set; }
-    public Customer customer_info { get; set; }
-    public List<Charge> charges { get; set; }
-    public List<Return> returns { get; set; }
-    public List<ShippingLine> shipping_lines { get; set; }
-    public string customer_id { get; set; }
-    public JsonDocument metadata { get; set; }
-    public bool pre_authorize { get; set; }
-    public string order_id { get; set; }
-    public int paid_at { get; set; }
-    public int created_at { get; set; }
+
+    [JsonPropertyName("order_id")]
+    public string OrderId { get; set; }
+
+    [JsonPropertyName("amount")]
+    public ConektaAmount Amount { get; set; }
+
+    [JsonPropertyName("currency")]
+    public string Currency { get; set; }
+
+    [JsonPropertyName("amount_refunded ")]
+    public ConektaAmount AmountRefunded { get; set; }
+
+    [JsonPropertyName("payment_status")]
+    public PaymentStatus PaymentStatus { get; set; }
+
+    [JsonPropertyName("line_items")]
+    public List<LineItem> LineItems { get; set; }
+
+    [JsonPropertyName("customer_info")]
+    public Customer CustomerInfo { get; set; }
+
+    [JsonPropertyName("charges")]
+    public List<Charge> Charges { get; set; }
+
+    [JsonPropertyName("returns")]
+    public List<Return> Returns { get; set; }
+
+    [JsonPropertyName("shipping_lines")]
+    public List<ShippingLine> ShippingLines { get; set; }
+
+    [JsonPropertyName("customer_id")]
+    public string CustomerId { get; set; }
+
+    [JsonPropertyName("metadata ")]
+    public JsonDocument Metadata { get; set; }
+
+    [JsonPropertyName("pre_authorize")]
+    public bool PreAuthorize { get; set; }
+
+    [JsonPropertyName("created_at")]
+    public UnixTimestamp created_at { get; set; }
+
+    [JsonPropertyName("updated_at")]
+    public UnixTimestamp UpdtedAt { get; set; }
 
 }

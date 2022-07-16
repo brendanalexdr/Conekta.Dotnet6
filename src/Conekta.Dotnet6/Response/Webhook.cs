@@ -1,37 +1,43 @@
 ﻿using Conekta.Dotnet6.Base;
 using Conekta.Dotnet6.Models;
+using Conekta.Dotnet6.Values;
 
 namespace Conekta.Dotnet6.Response;
 
-public class Webhook : IConektaObject
+public class Webhook : IConektaObject 
 {
+
     public string id { get; set; }
-    public string type { get; set; }
+
     public string @object { get; set; }
     public bool livemode { get; set; }
-    public int created_at { get; set; }
-    public int updated_at { get; set; }
+    public UnixTimestamp updated_at { get; set; }
     public string webhook_status { get; set; }
     public List<WebhookLog> webhook_logs { get; set; }
     public WebhookData data { get; set; }
+    public UnixTimestamp created_at { get; set; }
 
-    public Models.Webhook GetWebhook()
+    public ConektaEventType type { get; set; }
+
+    string IConektaObject.type => throw new NotImplementedException();
+
+    public Models.Event GetEvent()
     {
-        var webhookLogs = new List<Models.WebhookLog>();
+        var _webhookLogs = new List<Models.WebhookLog>();
         if (webhook_logs != null)
         {
-            webhookLogs = this.webhook_logs;
+            _webhookLogs = this.webhook_logs;
         }
 
-        return new Models.Webhook
+        return new Models.Event
         {
-            id = id,
-            created_at = created_at,
-            status = webhook_status,
-            type = type,
-            webhook_logs = webhookLogs,
-            @object = data.@object,
-            previous_attributes = data.previous_attributes
+            Id = this.id,
+            CreatedAt = this.created_at,
+            Status = this.webhook_status,
+            Type = this.type,
+            WebhookLogs = _webhookLogs,
+            Object = data.@object,
+            PreviousAttributes = data.previous_attributes
 
         };
 

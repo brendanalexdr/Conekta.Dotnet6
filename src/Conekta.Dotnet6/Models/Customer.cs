@@ -1,19 +1,42 @@
-﻿namespace Conekta.Dotnet6.Models;
+﻿using Conekta.Dotnet6.Values;
+using System.Text.Json.Serialization;
+
+namespace Conekta.Dotnet6.Models;
 
 public class Customer
 {
-    public string name { get; set; }
-    public string email { get; set; }
-    public string phone { get; set; }
-    public bool corporate { get; set; }
 
-    public PaymentSource[] payment_sources { get; set; }
+    [JsonPropertyName("customer_id")]
+    public string CustomerId { get; set; }
+
+    [JsonPropertyName("created_at")]
+    public UnixTimestamp created_at { get; set; }
+
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+
+    [JsonPropertyName("email")]
+    public string Email { get; set; }
+
+    [JsonPropertyName("phone")]
+    public string Phone { get; set; }
+
+    [JsonPropertyName("corporate")]
+    public bool Corporate { get; set; }
+
+    [JsonPropertyName("payment_sources")]
+    public PaymentSource[] PaymentSources { get; set; }
+
+    [JsonPropertyName("default_payment_source_id")]
+    public string DefaultPaymentSourceId { get; set; }
+
+    [JsonPropertyName("deleted")]
+    public bool Deleted { get; set; } = false;
+
+
     // public FiscalEntity[] fiscal_entities { get; set; }
     // public ShippingContact[] shipping_contacts { get; set; }
     // public Subscription subscription { get; set; }
-    public int account_age { get; set; }
-    public int paid_transactions { get; set; }
-    public int first_paid_at { get; set; }
-    public string customer_id { get; set; }
-    public bool deleted { get; set; } = false;
+
+
 }

@@ -2,6 +2,7 @@
 using CSharpFunctionalExtensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using ConektaValues = Conekta.Dotnet6.Values;
 
 namespace DemoWebApi.Controllers
 {
@@ -10,7 +11,7 @@ namespace DemoWebApi.Controllers
     // https://developers.conekta.com/reference/eventos
     public class WebhookController : Controller
     {
-        [HttpPost("webhook")]
+        [HttpPost("conekta/event")]
         public async Task<IActionResult> PostWebhookAsync()
         {
             if (Request.Body == null)
@@ -60,27 +61,21 @@ namespace DemoWebApi.Controllers
 
             var @object = await ConektaSerializer.DeserializeAsync<Conekta.Dotnet6.Response.Webhook>(webhookBody.ToString());
 
-            var webhookEvent = @object.GetWebhook(); 
+            var webhookEvent = @object.GetEvent();
 
-            switch (webhookEvent.type)
+
+            var eventType = webhookEvent.Type;
+
+            if (eventType == ConektaValues.ConektaEventType.ChargePaid)
             {
+                // do something...
 
-                case "charge.paid":
-                    {
-
-                        // do something... 
-
-                        break;
-                    }
-                case "charge.refunded":
-                    {
-
-                        // do something... 
-
-                        break;
-                    }
             }
+            if (eventType == ConektaValues.ConektaEventType.ChargeRefunded)
+            {
+                // do something...
 
+            }
 
             return Result.Success();
         }

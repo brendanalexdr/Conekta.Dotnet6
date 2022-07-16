@@ -1,17 +1,35 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace Conekta.Dotnet6.Models;
 
 public class Webhook
 {
 
-    public string id { get; set; }
+    [JsonPropertyName("id")]
+    public string Id { get; set; }
 
-    public double created_at { get; set; }
-    public string status { get; set; }
-    public string type { get; set; }
-    public List<WebhookLog> webhook_logs { get; set; }
-    public JsonDocument @object{ get; set; }
-    public JsonDocument previous_attributes { get; set; }
+    [JsonPropertyName("url")]
+    public string Url { get; set; }
+
+    [JsonPropertyName("status")]
+    public string Status { get; set; }
+
+    [JsonPropertyName("subscribed_events")]
+    public List<string> SubscribedEvents { get; set; }
+
+    [JsonPropertyName("synchronous")]
+    public bool Synchronous { get; set; }
+
+
+    [JsonPropertyName("production_enabled")]
+    public bool ProductionEnabled { get; set; }
+
+    [JsonPropertyName("development_enabled")]
+    public bool DevelopmentEnabled { get; set; }
 
 }

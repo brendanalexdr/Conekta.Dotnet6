@@ -1,4 +1,5 @@
 ﻿using Conekta.Dotnet6.Models;
+using Conekta.Dotnet6.Response;
 using CSharpFunctionalExtensions;
 using RestSharp;
 using System.Text;
@@ -238,6 +239,25 @@ public class ConektaApi
         return Result.Success<Models.PaymentLink, ConektaException>(paymentLinkResponse);
 
     }
+
+
+    // CREATE WEBHOOK
+
+    public async Task<Result> CreateWebhookAsync(Models.Webhook webhook)
+    {
+        var request = this.GetRestRequest(Method.Post, "webhooks");
+        request.AddBody(webhook);
+        var response = await this.GetClient().ExecuteAsync(request);
+        var jsonDoc = ConektaSerializer.ToJsonDocument(response.Content);
+        var type = jsonDoc.RootElement.GetProperty("object").ToString();
+        if (type == "error")
+        {
+            var ex = await GetConektaExceptionAsync(response.Content);
+            return Result.Failure(ex.message);
+        }
+        return Result.Success();
+    } 
+
 
     // --------------------
 

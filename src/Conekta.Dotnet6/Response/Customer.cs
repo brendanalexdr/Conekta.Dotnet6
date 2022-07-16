@@ -1,4 +1,5 @@
 ﻿using Conekta.Dotnet6.Base;
+using Conekta.Dotnet6.Values;
 
 namespace Conekta.Dotnet6.Response
 {
@@ -12,9 +13,7 @@ namespace Conekta.Dotnet6.Response
 
         public bool livemode { get; set; }
 
-        public int created_at { get; set; }
-
-        public int updated_at { get; set; }
+        public UnixTimestamp updated_at { get; set; }
 
         public new Conekta.Dotnet6.Response.PaymentSources payment_sources { get; set; }
 
@@ -28,15 +27,15 @@ namespace Conekta.Dotnet6.Response
 
             return new Models.Customer
             {
-                customer_id = this.id,
-                name = this.name,
-                email = this.email,
-                phone = this.phone,
-                corporate = this.corporate,
-                account_age = this.account_age,
-                paid_transactions = this.paid_transactions,
-                first_paid_at = this.first_paid_at,
-                payment_sources = paymentSources.ToArray()
+                CustomerId = this.id,
+                Name = this.Name,
+                Email = this.Email,
+                Phone = this.Phone,
+                Corporate = this.Corporate,
+                PaymentSources = paymentSources.ToArray(),
+                created_at = this.created_at,
+                DefaultPaymentSourceId = this.DefaultPaymentSourceId,
+                Deleted = this.Deleted
 
             };
         }
