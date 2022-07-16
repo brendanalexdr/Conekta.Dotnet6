@@ -21,7 +21,7 @@ dotnet add package Conekta.Dotnet6
 or
 
 ```powershell
-PM> Install-Package Conekta.Dotnet6 -Version 1.2.1
+PM> Install-Package Conekta.Dotnet6
 ```
 ## Setup
 ### In program.cs or startup.cs  
@@ -38,7 +38,7 @@ builder.Services.AddControllers()
 
     });
 ```
-## API Examples
+## API Example
 ### Get Customer 
 ```csharp
 using Conekta.Dotnet6;
@@ -51,7 +51,7 @@ var conektaApi = new ConektaApi("en", "your_conekta_private_key", _conektaRestCl
 Result<ConektaModels.Customer, ConektaModels.ConektaException> customer = await conektaApi.GetCustomerAsync(id);
 if (customer.IsFailure)
    {
-     // Error will be the Conekta Exception class
+     // Error will be the ConektaException class
      return Content(customer.Error.message);
    }
 
