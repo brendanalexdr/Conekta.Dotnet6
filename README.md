@@ -21,7 +21,7 @@ dotnet add package Conekta.Dotnet6
 or
 
 ```powershell
-PM> Install-Package Conekta.Dotnet6 -Version 1.2.1
+PM> Install-Package Conekta.Dotnet6
 ```
 ## Setup
 ### In program.cs or startup.cs  
