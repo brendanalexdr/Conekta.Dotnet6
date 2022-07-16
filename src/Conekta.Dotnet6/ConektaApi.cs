@@ -1,5 +1,4 @@
 ﻿using Conekta.Dotnet6.Models;
-using Conekta.Dotnet6.Util;
 using CSharpFunctionalExtensions;
 using RestSharp;
 using System.Text;

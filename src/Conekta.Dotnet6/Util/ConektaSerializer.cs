@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace Conekta.Dotnet6.Util;
+namespace Conekta.Dotnet6;
 
 public static class ConektaSerializer
 {

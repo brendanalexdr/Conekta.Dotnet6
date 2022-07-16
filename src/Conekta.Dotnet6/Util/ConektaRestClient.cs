@@ -2,7 +2,7 @@
 using RestSharp.Serializers.Json;
 using System.Text.Json;
 
-namespace Conekta.Dotnet6.Util;
+namespace Conekta.Dotnet6;
 
 // It is recommended that the RestClient be used as a Singleton  
 // https://restsharp.dev/usage.html#api-client
@@ -21,7 +21,7 @@ public class ConektaRestClient : IConektaRestClient
             DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
             AllowTrailingCommas = true
         });
-        _client = client;  
+        _client = client;
     }
     public RestClient GetClient()
     {

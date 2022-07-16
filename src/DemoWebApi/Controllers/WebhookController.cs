@@ -1,4 +1,4 @@
-﻿using Conekta.Dotnet6.Util;
+﻿using Conekta.Dotnet6;
 using CSharpFunctionalExtensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;

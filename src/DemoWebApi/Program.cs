@@ -1,4 +1,4 @@
-using Conekta.Dotnet6.Util;
+using Conekta.Dotnet6;
 using DemoWebApi.Config;
 using System.Text.Json;
 using TestWebApi;
