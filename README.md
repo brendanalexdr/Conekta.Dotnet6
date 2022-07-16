@@ -24,7 +24,7 @@ or
 PM> Install-Package Conekta.Dotnet6 -Version 1.2.1
 ```
 ## Setup
-### In program.cs or startup.cs.  
+### In program.cs or startup.cs  
 ConektaRestClient should be registered as a singleton, following [RestSharpt best practices](https://restsharp.dev/v107/#restclient-lifecycle)
 ```csharp
 builder.Services.AddSingleton<IConektaRestClient>(new ConektaRestClient());
