@@ -9,3 +9,17 @@ This package is for you if:
 and there is a hard dependency here on his nuget package [CSharpFunctionalExtensions](https://www.nuget.org/packages/CSharpFunctionalExtensions/). For more on this approach, checkout the following resources:
   - [Applying Functional Principles in C# 6](https://www.pluralsight.com/courses/csharp-applying-functional-principles)
   - [Don't throw exceptions in C#. Do this instead](https://youtu.be/a1ye9eGTB98)
+  
+## Installation
+
+Available on [NuGet](https://www.nuget.org/packages/CSharpFunctionalExtensions/)
+
+```bash
+dotnet add package Conekta.Dotnet6
+```
+
+or
+
+```powershell
+PM> Install-Package Conekta.Dotnet6 -Version 1.2.1
+```
