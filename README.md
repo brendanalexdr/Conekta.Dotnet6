@@ -12,7 +12,7 @@ and there is a hard dependency here on his nuget package [CSharpFunctionalExtens
   
 ## Installation
 
-Available on [NuGet](https://www.nuget.org/packages/CSharpFunctionalExtensions/)
+Available on [NuGet](https://www.nuget.org/packages/Conekta.Dotnet6)
 
 ```bash
 dotnet add package Conekta.Dotnet6
