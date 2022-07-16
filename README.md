@@ -41,14 +41,13 @@ builder.Services.AddControllers()
 ## API Examples
 ### Get Customer 
 ```csharp
-      // private readonly IConektaRestClient _conektaRestClient;
-       var conektaApi = new ConektaApi("en", "your_conekta_private_key", _conektaRestClient);
-            
-       var customer = await conektaApi.GetCustomerAsync(id);
-
-            if (customer.IsFailure)
-            {
-                return Content(customer.Error.message);
-            }
-       return Json(customer.Value);
+// private readonly IConektaRestClient _conektaRestClient;
+var conektaApi = new ConektaApi("en", "your_conekta_private_key", _conektaRestClient);
+          
+var customer = await conektaApi.GetCustomerAsync(id);
+if (customer.IsFailure)
+   {
+     return Content(customer.Error.message);
+   }
+return Json(customer.Value);
 ```
