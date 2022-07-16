@@ -41,13 +41,20 @@ builder.Services.AddControllers()
 ## API Examples
 ### Get Customer 
 ```csharp
+using Conekta.Dotnet6;
+using ConektaModels = Conekta.Dotnet6.Models;
+using CSharpFunctionalExtensions;
+
 // private readonly IConektaRestClient _conektaRestClient;
 var conektaApi = new ConektaApi("en", "your_conekta_private_key", _conektaRestClient);
           
-var customer = await conektaApi.GetCustomerAsync(id);
+Result<ConektaModels.Customer, ConektaModels.ConektaException> customer = await conektaApi.GetCustomerAsync(id);
 if (customer.IsFailure)
    {
+     // Error will be the Conekta Exception class
      return Content(customer.Error.message);
    }
+
+// customer.Value will be the Customer class
 return Json(customer.Value);
 ```
