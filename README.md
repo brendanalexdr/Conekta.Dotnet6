@@ -45,7 +45,7 @@ using Conekta.Dotnet6;
 using ConektaModels = Conekta.Dotnet6.Models;
 using CSharpFunctionalExtensions;
 
-// private readonly IConektaRestClient _conektaRestClient;
+// private readonly IConektaRestClient _conektaRestClient; <==Dependency Injected
 var conektaApi = new ConektaApi("en", "your_conekta_private_key", _conektaRestClient);
           
 Result<ConektaModels.Customer, ConektaModels.ConektaException> customer = await conektaApi.GetCustomerAsync(id);
