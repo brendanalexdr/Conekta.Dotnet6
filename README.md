@@ -57,7 +57,9 @@ using ConektaDotnet6;
 // private readonly IConektaRestClient _conektaRestClient; <==Dependency Injected
 var conektaApi = new ConektaApi("en", "your_conekta_private_key", _conektaRestClient);
  
-var customer = await conektaApi.GetCustomerAsync(id);
+string conektaCustId = "cus_987afdsf9a87df89";
+
+var customer = await conektaApi.GetCustomerAsync(conektaCustId);
 if (customer.IsFailure)
    {
      // Error will be the ConektaException class
