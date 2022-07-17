@@ -100,6 +100,7 @@ The conekta api handles datetime stamps with a 32bit int as a unix timestamp.  [
 ```csharp
 ConektaDatetime conektaDtm = ConektaDatetime.Create(DatTime.Now);
 DateTime backToDtm = conektaDtm.ToDateTime();
+int backToUnixSeconds = conektaDtm.ToUnixTimestamp();
 ```
 
 If you need to set a field like expires_at you can do something like the following:
