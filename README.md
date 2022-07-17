@@ -90,7 +90,7 @@ var conektaAmount = ConektaAmount.Create(myMoneyAmount);
 decimal backToDecimalAmount = conektaAmount.ToDecimal();
 ```
 
-It is all to easy to forget this conversion and charge incorrect amounts because you forgot to convert the int to decimal or vice versa.  ConektaAmount is your friend.  
+It is all too easy to forget this conversion and charge incorrect amounts because you forgot to convert the int to decimal or vice versa.  ConektaAmount is your friend.
 
 
 
