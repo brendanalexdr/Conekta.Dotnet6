@@ -86,6 +86,10 @@ Perhaps the most important value object is [ConektaAmount](https://github.com/br
 decimal myMoneyAmount = 125.25;
 var conektaAmount = ConektaAmount.Create(myMoneyAmount);
 
+Console.WriteLine(conektaAmount.Value.ToString());
+// 12525
+
+
 // easily convert back to decimal
 decimal backToDecimalAmount = conektaAmount.ToDecimal();
 ```
