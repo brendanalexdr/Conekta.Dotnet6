@@ -52,22 +52,17 @@ builder.Services.AddControllers()
 ### Get Customer
 
 ```csharp
-using ConektaDotnet6;
+using Conekta.Dotnet6;
+using ConektaModels = Conekta.Dotnet6.Models;
 using CSharpFunctionalExtensions;
 
 // private readonly IConektaRestClient _conektaRestClient; <==Dependency Injected
 var conektaApi = new ConektaApi("en", "your_conekta_private_key", _conektaRestClient);
-
-string conektaCustId = "cus_9898dfds98f79dsf79a8";
-Result<ConektaDotnet6.Models.Customer, ConektaDotnet6.Models.ConektaException> customer = await conektaApi.GetCustomerAsync(conektaCustId);
+        
+Result<ConektaModels.Customer, ConektaModels.ConektaException> customer = await conektaApi.GetCustomerAsync(id);
 if (customer.IsFailure)
    {
      // Error will be the ConektaException class
-     // the details list will often have a list of errors
-     foreach(var err in customer.Error.details)
-     {
-        Console.WriteLine(err);
-     }
      return Content(customer.Error.message);
    }
 
@@ -76,3 +71,10 @@ return Json(customer.Value);
 ```
 
 Full examples [here](https://github.com/brendanalexdr/Conekta.Dotnet6/blob/main/src/DemoWebApi/Controllers/HomeController.cs)
+
+## Value Objects
+
+A number of value objects have been created to help manage a few of the peculiarities of the conekta api.  If you are not familiar with value obects in .net, you can check out [this link](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/implement-value-objects).
+
+The important thing to remember is that you do not need to worry about the serialization of these value objects.  Custom [JsonConverters](https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-converters-how-to?pivots=dotnet-6-0) have been created for each value object to property handle the serialization and deserialization.
+
