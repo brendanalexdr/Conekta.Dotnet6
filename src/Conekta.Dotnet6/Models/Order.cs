@@ -1,8 +1,8 @@
-﻿using Conekta.Dotnet6.Values;
+﻿using ConektaDotnet6.Values;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Conekta.Dotnet6.Models;
+namespace ConektaDotnet6.Models;
 
 public class Order
 {
@@ -47,9 +47,9 @@ public class Order
     public bool PreAuthorize { get; set; }
 
     [JsonPropertyName("created_at")]
-    public UnixTimestamp created_at { get; set; }
+    public ConektaDatetime created_at { get; set; }
 
     [JsonPropertyName("updated_at")]
-    public UnixTimestamp UpdtedAt { get; set; }
+    public ConektaDatetime UpdtedAt { get; set; }
 
 }

@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Conekta.Dotnet6.Values;
+namespace ConektaDotnet6.Values;
 
 public class PaymentStatusJsonConverter : JsonConverter<PaymentStatus>
 {

@@ -1,7 +1,6 @@
-using Conekta.Dotnet6;
+using ConektaDotnet6;
 using DemoWebApi.Config;
-using System.Text.Json;
-using TestWebApi;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

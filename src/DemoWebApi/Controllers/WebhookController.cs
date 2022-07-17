@@ -1,8 +1,9 @@
-﻿using Conekta.Dotnet6;
+﻿using ConektaDotnet6;
+using ConektaDotnet6.Values;
 using CSharpFunctionalExtensions;
+using DemoWebApi.Config;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-using ConektaValues = Conekta.Dotnet6.Values;
 
 namespace DemoWebApi.Controllers
 {
@@ -11,8 +12,35 @@ namespace DemoWebApi.Controllers
     // https://developers.conekta.com/reference/eventos
     public class WebhookController : Controller
     {
-        [HttpPost("conekta/event")]
-        public async Task<IActionResult> PostWebhookAsync()
+        private readonly IConektaRestClient _conektaRestClient;
+        private readonly ConektaPrivateKey _conektaPrivateKey;
+
+        public WebhookController(IConektaRestClient conektaRestClient, ConektaPrivateKey conektaPrivateKey)
+        {
+            _conektaRestClient = conektaRestClient;
+            _conektaPrivateKey = conektaPrivateKey;
+        }
+
+        // use this endpoint to create a new webhook config with Conekta
+        [HttpPost("webhook")]
+        public async Task<ActionResult> CreateWebhookAsync([FromBody] ConektaDotnet6.Models.Webhook webhook)
+        {
+
+            var conektaApi = new ConektaApi("en", _conektaPrivateKey.Value, _conektaRestClient);
+
+            var result = await conektaApi.CreateWebhookAsync(webhook);
+            if (result.IsFailure)
+            {
+                return new BadRequestResult();
+            }
+
+            return new OkResult();
+
+        }
+
+        //use this enpoint to consume webhook events from Conekta
+        [HttpPost("conekta/events")]
+        public async Task<IActionResult> PostWebhookEventsAsync()
         {
             if (Request.Body == null)
             {
@@ -39,10 +67,12 @@ namespace DemoWebApi.Controllers
             var root = requestBody.RootElement;
             if (root.ValueKind == System.Text.Json.JsonValueKind.Array)
             {
+                // in this case Conekta has aggregated 2 or more events into one webhook payload
+
                 var eventItems = root.EnumerateArray();
                 foreach (var item in eventItems)
                 {
-                    await LogWebhookAsync(item);
+                    await ProcessWebhookEvent(item);
 
                 }
                
@@ -50,28 +80,28 @@ namespace DemoWebApi.Controllers
             if (root.ValueKind == JsonValueKind.Object)
             {
 
-                await LogWebhookAsync(root);
+                await ProcessWebhookEvent(root);
             }
             return new OkResult();
         }
 
-
-        private async Task<Result> LogWebhookAsync(JsonElement webhookBody)
+        private async Task<Result> ProcessWebhookEvent(JsonElement eventBody)
         {
 
-            var @object = await ConektaSerializer.DeserializeAsync<Conekta.Dotnet6.Response.Webhook>(webhookBody.ToString());
+            var obj = await ConektaSerializer.DeserializeAsync<ConektaDotnet6.Response.Webhook>(eventBody.ToString());
 
-            var webhookEvent = @object.GetEvent();
-
+            var webhookEvent = obj.GetEvent();
 
             var eventType = webhookEvent.Type;
 
-            if (eventType == ConektaValues.ConektaEventType.ChargePaid)
+            if (eventType == ConektaEventType.ChargePaid)
             {
-                // do something...
+
+                var charge = await ConektaSerializer.DeserializeAsync<ConektaDotnet6.Models.Charge>(webhookEvent.Object.RootElement.ToString());
+                // do something...               
 
             }
-            if (eventType == ConektaValues.ConektaEventType.ChargeRefunded)
+            if (eventType == ConektaEventType.ChargeChargebackCreated)
             {
                 // do something...
 

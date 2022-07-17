@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace Conekta.Dotnet6.Response;
+namespace ConektaDotnet6.Response;
 
 public class WebhookData
 {

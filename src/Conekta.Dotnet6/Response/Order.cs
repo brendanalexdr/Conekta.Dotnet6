@@ -1,16 +1,16 @@
 ﻿using Conekta.Dotnet6.Base;
-using Conekta.Dotnet6.Values;
+using ConektaDotnet6.Values;
 using System.Text.Json;
 
-namespace Conekta.Dotnet6.Response
+namespace ConektaDotnet6.Response
 {
-    public class Order : Conekta.Dotnet6.Models.Order, IConektaObject
+    public class Order : ConektaDotnet6.Models.Order, IConektaObject
     {
         public string id { get; set; }
         public string type { get; set; }
         public string @object { get; set; }
         public bool livemode { get; set; }
-        public UnixTimestamp updated_at { get; set; }
+        public ConektaDatetime updated_at { get; set; }
         new public LineItems line_items { get; set; }
         new public Charges charges { get; set; }
         new public Returns returns { get; set; }

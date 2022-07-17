@@ -1,6 +1,6 @@
-﻿using Conekta.Dotnet6.Base;
+﻿using ConektaDotnet6.Base;
 
-namespace Conekta.Dotnet6.Response
+namespace ConektaDotnet6.Response
 {
     public class PaymentSources : IConektaList
     {
@@ -12,6 +12,6 @@ namespace Conekta.Dotnet6.Response
 
         public string next_page_url { get; set; }
 
-        public List<Conekta.Dotnet6.Models.PaymentSource> data { get; set; }
+        public List<ConektaDotnet6.Models.PaymentSource> data { get; set; }
     }
 }

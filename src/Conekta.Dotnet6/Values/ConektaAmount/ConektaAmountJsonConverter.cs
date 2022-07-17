@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Conekta.Dotnet6.Values;
+namespace ConektaDotnet6.Values;
 
 public class ConektaAmountJsonConverter : JsonConverter<ConektaAmount>
 {
@@ -9,7 +9,7 @@ public class ConektaAmountJsonConverter : JsonConverter<ConektaAmount>
     {
         int conektaInt = reader.GetInt32();
 
-        return ConektaAmount.Create(conektaInt);
+        return new ConektaAmount(conektaInt);
 
     }
 

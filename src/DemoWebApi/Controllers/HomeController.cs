@@ -1,7 +1,6 @@
-﻿using Conekta.Dotnet6;
+﻿using ConektaDotnet6;
 using DemoWebApi.Config;
 using Microsoft.AspNetCore.Mvc;
-using ConektaModels = Conekta.Dotnet6.Models;
 namespace TestWebApi.Controllers
 {
     public class HomeController : Controller
@@ -37,20 +36,6 @@ namespace TestWebApi.Controllers
             return Json(customer.Value);
         }
 
-        [HttpPost("webhook")]
-        public async Task<ActionResult> CreateWebhookAsync([FromBody] ConektaModels.Webhook webhook)
-        {
 
-            var conektaApi = new ConektaApi("en", _conektaPrivateKey.Value, _conektaRestClient);
-
-            var result = await conektaApi.CreateWebhookAsync(webhook);
-            if (result.IsFailure)
-            {
-                return new BadRequestResult();
-            }
-
-            return new OkResult();
-
-        }
     }
 }

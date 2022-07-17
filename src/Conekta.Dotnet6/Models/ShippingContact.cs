@@ -1,5 +1,5 @@
 ﻿
-namespace Conekta.Dotnet6.Models
+namespace ConektaDotnet6.Models
 {
     public class ShippingContact
     {

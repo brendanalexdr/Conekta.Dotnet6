@@ -1,8 +1,8 @@
-﻿using Conekta.Dotnet6.Values;
+﻿using ConektaDotnet6.Values;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Conekta.Dotnet6.Models;
+namespace ConektaDotnet6.Models;
 
 public class Event
 {
@@ -12,7 +12,7 @@ public class Event
 
     [JsonPropertyName("created_at")]
 
-    public UnixTimestamp CreatedAt { get; set; }
+    public ConektaDatetime CreatedAt { get; set; }
 
     [JsonPropertyName("status")]
     public string Status { get; set; }

@@ -1,6 +1,6 @@
-﻿using Conekta.Dotnet6.Base;
+﻿using ConektaDotnet6.Base;
 
-namespace Conekta.Dotnet6.Response
+namespace ConektaDotnet6.Response
 {
     public class Returns : IConektaList
     {

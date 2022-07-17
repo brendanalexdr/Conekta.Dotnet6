@@ -1,7 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using System.Text.Json.Serialization;
 
-namespace Conekta.Dotnet6.Values;
+namespace ConektaDotnet6.Values;
 
 [JsonConverter(typeof(PaymentMethodTypeJsonConverter))]
 public class PaymentMethodType : ValueObject<PaymentMethodType>

@@ -1,6 +1,6 @@
 ﻿using RestSharp;
 
-namespace Conekta.Dotnet6
+namespace ConektaDotnet6
 {
     public interface IConektaRestClient
     {

@@ -1,12 +1,12 @@
 ﻿using CSharpFunctionalExtensions;
 using System.Text.Json.Serialization;
 
-namespace Conekta.Dotnet6.Values;
+namespace ConektaDotnet6.Values;
 
-[JsonConverter(typeof(UnixTimestampJsonConverter))]
-public class UnixTimestamp : ValueObject<UnixTimestamp>
+[JsonConverter(typeof(ConektaDatetimeJsonConverter))]
+public class ConektaDatetime : ValueObject<ConektaDatetime>
 {
-    public static UnixTimestamp Empty = new UnixTimestamp(0);
+    public static ConektaDatetime Empty = new ConektaDatetime(0);
 
     public bool IsEmpty
     {
@@ -20,28 +20,28 @@ public class UnixTimestamp : ValueObject<UnixTimestamp>
     public int Value { get; protected set; }
 
 
-    protected UnixTimestamp()
+    protected ConektaDatetime()
     {
 
     }
 
-    protected UnixTimestamp(int value )
+    protected ConektaDatetime(int value )
     {
         Value = value;
     }
 
-    public static UnixTimestamp Create(DateTime value)
+    public static ConektaDatetime Create(DateTime value)
     {
         int unixTimestamp = (int)value.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
         
-        return new UnixTimestamp(unixTimestamp);
+        return new ConektaDatetime(unixTimestamp);
 
     }
 
-    public static UnixTimestamp Create(int value)
+    public static ConektaDatetime Create(int value)
     {
 
-        return new UnixTimestamp(value);
+        return new ConektaDatetime(value);
 
     }
 
@@ -54,7 +54,7 @@ public class UnixTimestamp : ValueObject<UnixTimestamp>
 
     }
 
-    protected override bool EqualsCore(UnixTimestamp other)
+    protected override bool EqualsCore(ConektaDatetime other)
     {
         return Value == other.Value;
     }

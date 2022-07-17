@@ -1,4 +1,4 @@
-﻿using Conekta.Dotnet6.Values;
+﻿using ConektaDotnet6.Values;
 
 namespace Conekta.Dotnet6.Base;
 
@@ -8,6 +8,6 @@ public interface IConektaObject
     public string type { get; }
     public string @object { get; }
     public bool livemode { get; }
-    public UnixTimestamp created_at { get; }
-    public UnixTimestamp updated_at { get; }
+    public ConektaDatetime created_at { get; }
+    public ConektaDatetime updated_at { get; }
 }

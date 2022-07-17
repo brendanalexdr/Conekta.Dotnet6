@@ -1,7 +1,7 @@
-﻿using Conekta.Dotnet6.Values;
+﻿using ConektaDotnet6.Values;
 using System.Text.Json.Serialization;
 
-namespace Conekta.Dotnet6.Models;
+namespace ConektaDotnet6.Models;
 
 public class Customer
 {
@@ -10,7 +10,7 @@ public class Customer
     public string CustomerId { get; set; }
 
     [JsonPropertyName("created_at")]
-    public UnixTimestamp created_at { get; set; }
+    public ConektaDatetime created_at { get; set; }
 
     [JsonPropertyName("name")]
     public string Name { get; set; }

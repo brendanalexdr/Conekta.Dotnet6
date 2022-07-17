@@ -1,7 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using System.Text.Json.Serialization;
 
-namespace Conekta.Dotnet6.Values;
+namespace ConektaDotnet6.Values;
 
 
 [JsonConverter(typeof(ConektaAmountJsonConverter))]
@@ -15,7 +15,7 @@ public class ConektaAmount : ValueObject<ConektaAmount>
     {
 
     }
-    protected ConektaAmount(int value)
+    public ConektaAmount(int value)
     {
         Value = value;
     }
@@ -30,11 +30,6 @@ public class ConektaAmount : ValueObject<ConektaAmount>
     {
         int value = Convert.ToInt32(amount * 100);
         return new ConektaAmount(value);
-
-    }
-    public static ConektaAmount Create(int conektaInt)
-    {
-        return new ConektaAmount(conektaInt);
 
     }
 

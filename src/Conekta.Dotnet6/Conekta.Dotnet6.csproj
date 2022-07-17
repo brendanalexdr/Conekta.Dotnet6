@@ -4,18 +4,20 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
-    <AssemblyVersion>1.2.0</AssemblyVersion>
+    <AssemblyVersion>1.3.1</AssemblyVersion>
     <Authors>Brendan Alexander</Authors>
     <Company>Eventec</Company>
-    <Description>Conekta Api for .NET 6 using the native System.Text.Json</Description>
+    <Description>Conekta Api wrapper for .NET 6 using the native System.Text.Json</Description>
     <PackageProjectUrl>https://github.com/brendanalexdr/Conekta.Dotnet6</PackageProjectUrl>
     <PackageReadmeFile>README-NUGET.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/brendanalexdr/Conekta.Dotnet6</RepositoryUrl>
-    <PackageTags>conekta</PackageTags>
-    <Version>1.2.1</Version>
-    <FileVersion>1.2.0</FileVersion>
+    <PackageTags>conekta, brendan, alexander, payments</PackageTags>
+    <Version>1.4.1</Version>
+    <FileVersion>1.3.1</FileVersion>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	<PackageReleaseNotes>Admin edits</PackageReleaseNotes>
+	<PackageReleaseNotes>Changed root namespace to ConektaDotnet6</PackageReleaseNotes>
+	<PackageOutputPath>E:/Nuget-Local</PackageOutputPath>
+	  <RootNamespace>ConektaDotnet6</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,8 +1,8 @@
 ﻿using Conekta.Dotnet6.Base;
-using Conekta.Dotnet6.Models;
-using Conekta.Dotnet6.Values;
+using ConektaDotnet6.Models;
+using ConektaDotnet6.Values;
 
-namespace Conekta.Dotnet6.Response;
+namespace ConektaDotnet6.Response;
 
 public class Webhook : IConektaObject 
 {
@@ -11,11 +11,11 @@ public class Webhook : IConektaObject
 
     public string @object { get; set; }
     public bool livemode { get; set; }
-    public UnixTimestamp updated_at { get; set; }
+    public ConektaDatetime updated_at { get; set; }
     public string webhook_status { get; set; }
     public List<WebhookLog> webhook_logs { get; set; }
     public WebhookData data { get; set; }
-    public UnixTimestamp created_at { get; set; }
+    public ConektaDatetime created_at { get; set; }
 
     public ConektaEventType type { get; set; }
 

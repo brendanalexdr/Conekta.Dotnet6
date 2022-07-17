@@ -2,7 +2,7 @@
 using RestSharp.Serializers.Json;
 using System.Text.Json;
 
-namespace Conekta.Dotnet6;
+namespace ConektaDotnet6;
 
 // It is recommended that the RestClient be used as a Singleton  
 // https://restsharp.dev/usage.html#api-client

@@ -1,6 +1,6 @@
-﻿using Conekta.Dotnet6.Base;
+﻿using ConektaDotnet6.Base;
 
-namespace Conekta.Dotnet6.Response
+namespace ConektaDotnet6.Response
 {
     public class LineItems : IConektaList
     {
@@ -11,7 +11,7 @@ namespace Conekta.Dotnet6.Response
         public int total { get; set; }
 
         public string next_page_url { get; set; }
-        public List<Conekta.Dotnet6.Models.LineItem> data { get; set; }
+        public List<ConektaDotnet6.Models.LineItem> data { get; set; }
 
     }
 }

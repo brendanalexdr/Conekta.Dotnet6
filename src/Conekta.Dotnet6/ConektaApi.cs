@@ -1,10 +1,9 @@
-﻿using Conekta.Dotnet6.Models;
-using Conekta.Dotnet6.Response;
+﻿using ConektaDotnet6.Models;
 using CSharpFunctionalExtensions;
 using RestSharp;
 using System.Text;
 
-namespace Conekta.Dotnet6;
+namespace ConektaDotnet6;
 
 public class ConektaApi
 {
@@ -39,7 +38,7 @@ public class ConektaApi
             var ex = await GetConektaExceptionAsync(response.Content);
             return Result.Failure<Models.Order, ConektaException>(ex);
         }
-        var orderResponse = await ConektaSerializer.DeserializeAsync<Conekta.Dotnet6.Response.Order>(response.Content);
+        var orderResponse = await ConektaSerializer.DeserializeAsync<ConektaDotnet6.Response.Order>(response.Content);
         var order = orderResponse.GetOrder();
         return Result.Success<Models.Order, ConektaException>(order);
 
@@ -60,7 +59,7 @@ public class ConektaApi
 
         }
 
-        var order_ = await ConektaSerializer.DeserializeAsync<Conekta.Dotnet6.Response.Order>(response.Content);
+        var order_ = await ConektaSerializer.DeserializeAsync<ConektaDotnet6.Response.Order>(response.Content);
         Models.Order orderResponse = order_.GetOrder();
         return Result.Success<Models.Order, ConektaException>(orderResponse);
 
@@ -81,7 +80,7 @@ public class ConektaApi
             var ex = await GetConektaExceptionAsync(response.Content);
             return Result.Failure<Models.Customer, ConektaException>(ex);
         }
-        var custResponse = await ConektaSerializer.DeserializeAsync<Conekta.Dotnet6.Response.Customer>(response.Content);
+        var custResponse = await ConektaSerializer.DeserializeAsync<ConektaDotnet6.Response.Customer>(response.Content);
         var cust = custResponse.GetCustomer();
         return Result.Success<Models.Customer, ConektaException>(cust);
 
@@ -110,7 +109,7 @@ public class ConektaApi
             try
             {
                 var json = jsonDoc.RootElement.GetProperty("data").ToString();
-                var custListResponse = await ConektaSerializer.DeserializeAsync<List<Conekta.Dotnet6.Response.Customer>>(json);
+                var custListResponse = await ConektaSerializer.DeserializeAsync<List<ConektaDotnet6.Response.Customer>>(json);
 
                 foreach (var custResponse in custListResponse)
                 {
@@ -142,7 +141,7 @@ public class ConektaApi
             var ex = await GetConektaExceptionAsync(response.Content);
             return Result.Failure<Models.Customer, ConektaException>(ex);
         }
-        var custResponse = await ConektaSerializer.DeserializeAsync<Conekta.Dotnet6.Response.Customer>(response.Content);
+        var custResponse = await ConektaSerializer.DeserializeAsync<ConektaDotnet6.Response.Customer>(response.Content);
         var cust = custResponse.GetCustomer();
         return Result.Success<Models.Customer, ConektaException>(cust);
     }

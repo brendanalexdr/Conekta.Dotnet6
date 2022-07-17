@@ -1,7 +1,7 @@
-﻿using Conekta.Dotnet6.Values;
+﻿using ConektaDotnet6.Values;
 using System.Text.Json.Serialization;
 
-namespace Conekta.Dotnet6.Models
+namespace ConektaDotnet6.Models
 {
 
     public class Charge
@@ -10,7 +10,7 @@ namespace Conekta.Dotnet6.Models
         public string Id { get; set; }
 
         [JsonPropertyName("created_at")]
-        public UnixTimestamp CreatedAt { get; set; }
+        public ConektaDatetime CreatedAt { get; set; }
 
         [JsonPropertyName("currency")]
         public string Currency { get; set; }
@@ -31,7 +31,7 @@ namespace Conekta.Dotnet6.Models
         public string Status { get; set; }
 
         [JsonPropertyName("paid_at")]
-        public UnixTimestamp PaidAt { get; set; }
+        public ConektaDatetime PaidAt { get; set; }
 
         [JsonPropertyName("fee")]
         public ConektaAmount Fee { get; set; }

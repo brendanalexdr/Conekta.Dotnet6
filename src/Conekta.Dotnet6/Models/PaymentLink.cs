@@ -1,6 +1,6 @@
-﻿using Conekta.Dotnet6.Values;
+﻿using ConektaDotnet6.Values;
 
-namespace Conekta.Dotnet6.Models;
+namespace ConektaDotnet6.Models;
 
 public class PaymentLink
 {
@@ -9,7 +9,7 @@ public class PaymentLink
 
     public bool recurrent { get; set; }
 
-    public UnixTimestamp expires_at { get; set; }
+    public ConektaDatetime expires_at { get; set; }
 
     public string[] allowed_payment_methods { get; set; }
 

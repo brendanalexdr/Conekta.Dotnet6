@@ -1,4 +1,4 @@
-﻿namespace Conekta.Dotnet6.Base;
+﻿namespace ConektaDotnet6.Base;
 
 public interface IConektaList
 {

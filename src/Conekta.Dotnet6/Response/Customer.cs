@@ -1,7 +1,7 @@
 ﻿using Conekta.Dotnet6.Base;
-using Conekta.Dotnet6.Values;
+using ConektaDotnet6.Values;
 
-namespace Conekta.Dotnet6.Response
+namespace ConektaDotnet6.Response
 {
     public class Customer : Models.Customer, IConektaObject
     {
@@ -13,9 +13,9 @@ namespace Conekta.Dotnet6.Response
 
         public bool livemode { get; set; }
 
-        public UnixTimestamp updated_at { get; set; }
+        public ConektaDatetime updated_at { get; set; }
 
-        public new Conekta.Dotnet6.Response.PaymentSources payment_sources { get; set; }
+        public new ConektaDotnet6.Response.PaymentSources payment_sources { get; set; }
 
         public Models.Customer GetCustomer()
         {

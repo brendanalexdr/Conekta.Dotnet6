@@ -1,6 +1,6 @@
-﻿using Conekta.Dotnet6.Values;
+﻿using ConektaDotnet6.Values;
 
-namespace Conekta.Dotnet6.Models
+namespace ConektaDotnet6.Models
 {
     public class LineItem
     {

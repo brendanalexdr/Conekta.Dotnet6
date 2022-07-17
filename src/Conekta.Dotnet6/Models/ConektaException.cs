@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Conekta.Dotnet6.Models;
+namespace ConektaDotnet6.Models;
 
 public class ConektaException : Exception
 {
