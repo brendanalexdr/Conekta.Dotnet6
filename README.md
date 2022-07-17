@@ -52,15 +52,14 @@ builder.Services.AddControllers()
 ### Get Customer
 
 ```csharp
-using Conekta.Dotnet6;
-using ConektaModels = Conekta.Dotnet6.Models;
+using ConektaDotnet6;
 using CSharpFunctionalExtensions;
 
 // private readonly IConektaRestClient _conektaRestClient; <==Dependency Injected
 var conektaApi = new ConektaApi("en", "your_conekta_private_key", _conektaRestClient);
 
 string conektaCustId = "cus_9898dfds98f79dsf79a8";
-Result<ConektaModels.Customer, ConektaModels.ConektaException> customer = await conektaApi.GetCustomerAsync(conektaCustId);
+Result<ConektaDotnet6.Models.Customer, ConektaDotnet6.Models.ConektaException> customer = await conektaApi.GetCustomerAsync(conektaCustId);
 if (customer.IsFailure)
    {
      // Error will be the ConektaException class
