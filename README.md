@@ -106,12 +106,22 @@ int backToUnixSeconds = conektaDtm.ToUnixTimestamp();
 If you need to set a field like expires_at you can do something like the following:
 
 ```csharp
-ConektaDatetime expiresAt = ConektaDatetime.Now.AddDays(2);
+ConektaDatetime conektaDtm = ConektaDatetime.Now.AddDays(2);
 ```
 
 This will save you time converting back and forth.
 
+### PaymentStatus
 
+Every charge will indicate its payment status which are represented by [text values](https://github.com/brendanalexdr/Conekta.Dotnet6/blob/main/conekta-payment-status-values.md).  The [PaymentStatus](https://github.com/brendanalexdr/Conekta.Dotnet6/blob/main/src/Conekta.Dotnet6/Values/PaymentStatus/PaymentStatus.cs) value object wraps these text values so you can benefit from intellisense.
+
+```csharp
+if (charge.Status == PaymentStatus.Refunded) {
+
+  // do something
+
+}
+```
 
 
 

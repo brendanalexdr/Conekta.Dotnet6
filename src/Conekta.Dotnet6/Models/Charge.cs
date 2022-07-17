@@ -28,7 +28,7 @@ namespace ConektaDotnet6.Models
         public string Description { get; set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; set; }
+        public PaymentStatus Status { get; set; }
 
         [JsonPropertyName("paid_at")]
         public ConektaDatetime PaidAt { get; set; }
