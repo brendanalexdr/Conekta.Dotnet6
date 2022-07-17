@@ -52,7 +52,7 @@ namespace ConektaDotnet6.Models
             get
             {
 
-                return Status == "paid";
+                return Status == PaymentStatus.Paid;
 
             }
         }
