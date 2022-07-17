@@ -96,14 +96,18 @@ It is all too easy to forget this conversion and charge incorrect amounts becaus
 
 ### ConektaDatetime
 
-The conekta api handles datetime stamps with a 32bit int as a unix timestamp.  [ConektaDatetime](https://github.com/brendanalexdr/Conekta.Dotnet6/blob/main/src/Conekta.Dotnet6/Values/ConektaDatetime/ConektaDatetime.cs) wraps this integer.
-
-So created_at, updated_at, paid_at etc will be ConektaDatetime values.
+The conekta api handles datetime stamps with a 32bit int as a unix timestamp.  [ConektaDatetime](https://github.com/brendanalexdr/Conekta.Dotnet6/blob/main/src/Conekta.Dotnet6/Values/ConektaDatetime/ConektaDatetime.cs) wraps this integer.  You will now discover that such datetime fields as created_at, updated_at, paid_at etc will be ConektaDatetime values.
 
 ```csharp
 ConektaDatetime conektaDtm = ConektaDatetime.Create(DatTime.Now);
 DateTime backToDtm = conektaDtm.ToDateTime();
 ```
+
+This will save you time converting back and forth.  
+
+
+
+
 
 
 
