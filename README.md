@@ -53,12 +53,11 @@ builder.Services.AddControllers()
 
 ```csharp
 using ConektaDotnet6;
-using CSharpFunctionalExtensions;
 
 // private readonly IConektaRestClient _conektaRestClient; <==Dependency Injected
 var conektaApi = new ConektaApi("en", "your_conekta_private_key", _conektaRestClient);
-        
-Result<ConektaDotnet6.Models.Customer, ConektaDotnet6.Models.ConektaException> customer = await conektaApi.GetCustomerAsync(id);
+ 
+var customer = await conektaApi.GetCustomerAsync(id);
 if (customer.IsFailure)
    {
      // Error will be the ConektaException class
