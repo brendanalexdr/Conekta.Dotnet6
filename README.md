@@ -78,3 +78,16 @@ A number of value objects have been created to help manage a few of the peculiar
 
 The important thing to remember is that you do not need to worry about the serialization of these value objects.  Custom [JsonConverters](https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-converters-how-to?pivots=dotnet-6-0) have been created for each value object to property handle the serialization and deserialization.
 
+### ConektaAmount
+
+Perhaps the most important value object is [ConektaAmount](https://github.com/brendanalexdr/Conekta.Dotnet6/blob/main/src/Conekta.Dotnet6/Values/ConektaAmount/ConektaAmount.cs).  This is a wrapper class to deal with the how the conekta api deals with money amounts, which is that all decimal or double numbers are multiplied by 100 and converted to integer.  ConektaAmount will handle this for you.
+
+```csharp
+decimal myMoneyAmount = 125.25;
+var conektaAmount = ConektaAmount.Create(myMoneyAmount);
+
+// easily convert back to decimal
+decimal backToDecimalAmount = conektaAmount.ToDecimal();
+```
+
+
