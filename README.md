@@ -102,9 +102,13 @@ ConektaDatetime conektaDtm = ConektaDatetime.Create(DatTime.Now);
 DateTime backToDtm = conektaDtm.ToDateTime();
 ```
 
-This will save you time converting back and forth.  
+If you need to set a field like expires_at you can do something like the following:
 
+```csharp
+ConektaDatetime conektaDtm = ConektaDatetime.Now.AddDays(2);
+```
 
+This will save you time converting back and forth.
 
 
 

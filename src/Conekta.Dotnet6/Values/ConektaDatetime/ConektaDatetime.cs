@@ -8,6 +8,7 @@ public class ConektaDatetime : ValueObject<ConektaDatetime>
 {
     public static ConektaDatetime Empty = new ConektaDatetime(0);
 
+    public static ConektaDatetime Now = ConektaDatetime.Create(DateTime.Now);
     public bool IsEmpty
     {
 
@@ -51,7 +52,11 @@ public class ConektaDatetime : ValueObject<ConektaDatetime>
         dtDateTime = dtDateTime.AddSeconds(Value).ToLocalTime();
         return dtDateTime;
 
+    }
 
+    public int ToUnixTimestamp()
+    {
+        return Value;
     }
 
     protected override bool EqualsCore(ConektaDatetime other)
@@ -63,4 +68,28 @@ public class ConektaDatetime : ValueObject<ConektaDatetime>
     {
         return Value.GetHashCode();
     }
+
+    public ConektaDatetime AddDays(int days)
+    {
+        var dtm = this.ToDateTime();
+
+        return ConektaDatetime.Create(dtm.AddDays(days));
+
+    }
+
+    public ConektaDatetime AddMonths(int months)
+    {
+        var dtm = this.ToDateTime();
+
+        return ConektaDatetime.Create(dtm.AddMonths(months));
+
+    }
+    public ConektaDatetime AddHours(int hours)
+    {
+        var dtm = this.ToDateTime();
+
+        return ConektaDatetime.Create(dtm.AddHours(hours));
+
+    }
+
 }
