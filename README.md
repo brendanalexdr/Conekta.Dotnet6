@@ -63,6 +63,11 @@ Result<ConektaDotnet6.Models.Customer, ConektaDotnet6.Models.ConektaException> c
 if (customer.IsFailure)
    {
      // Error will be the ConektaException class
+     // the details list will often have a list of errors
+     foreach(var err in customer.Error.details)
+     {
+        Console.WriteLine(err);
+     }
      return Content(customer.Error.message);
    }
 
