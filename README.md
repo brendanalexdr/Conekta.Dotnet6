@@ -90,6 +90,10 @@ var conektaAmount = ConektaAmount.Create(myMoneyAmount);
 decimal backToDecimalAmount = conektaAmount.ToDecimal();
 ```
 
+It is all to easy to forget this conversion and charge incorrect amounts because you forgot to convert the int to decimal or vice versa.  ConektaAmount is your friend.  
+
+
+
 ### ConektaDatetime
 
 The conekta api handles datetime stamps with a 32bit int as a unix timestamp.  [ConektaDatetime](https://github.com/brendanalexdr/Conekta.Dotnet6/blob/main/src/Conekta.Dotnet6/Values/ConektaDatetime/ConektaDatetime.cs) wraps this integer.
@@ -100,6 +104,7 @@ So created_at, updated_at, paid_at etc will be ConektaDatetime values.
 ConektaDatetime conektaDtm = ConektaDatetime.Create(DatTime.Now);
 DateTime backToDtm = conektaDtm.ToDateTime();
 ```
+
 
 
 
