@@ -82,4 +82,9 @@ public class PaymentMethodType : ValueObject<PaymentMethodType>
     {
         return Value.GetHashCode();
     }
+
+    public override string ToString()
+    {
+        return Value.ToString();
+    }
 }

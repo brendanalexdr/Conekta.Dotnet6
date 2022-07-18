@@ -92,4 +92,6 @@ public class ConektaDatetime : ValueObject<ConektaDatetime>
 
     }
 
+
+
 }

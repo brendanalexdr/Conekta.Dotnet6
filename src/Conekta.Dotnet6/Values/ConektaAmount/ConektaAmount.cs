@@ -51,4 +51,9 @@ public class ConektaAmount : ValueObject<ConektaAmount>
     {
         return Value.GetHashCode(); 
     }
+
+    public override string ToString()
+    {
+        return Value.ToString();
+    }
 }

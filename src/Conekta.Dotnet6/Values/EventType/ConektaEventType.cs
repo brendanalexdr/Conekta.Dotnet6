@@ -47,6 +47,11 @@ public class ConektaEventType : ValueObject<ConektaEventType>
         return Value.GetHashCode();
     }
 
+    public override string ToString()
+    {
+        return Value.ToString();
+    }
+
     public readonly static ConektaEventType ChargeCreated = new ConektaEventType("charge.created");
     public readonly static ConektaEventType ChargePaid = new ConektaEventType("charge.paid");
     public readonly static ConektaEventType ChargeUnderFraudReview = new ConektaEventType("charge.under_fraud_review");
