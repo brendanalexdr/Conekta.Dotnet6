@@ -8,7 +8,6 @@ public class Webhook : IConektaObject
 {
 
     public string id { get; set; }
-
     public string @object { get; set; }
     public bool livemode { get; set; }
     public ConektaDatetime updated_at { get; set; }

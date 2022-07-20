@@ -4,7 +4,18 @@ using System.Text.Json.Serialization;
 
 namespace ConektaDotnet6.Models;
 
-public class Order
+public interface IOrder
+{
+    ConektaAmount Amount { get; set; }
+    ConektaAmount AmountRefunded { get; set; }
+    string Currency { get; set; }
+    string CustomerId { get; set; }
+    JsonDocument Metadata { get; set; }
+    PaymentStatus PaymentStatus { get; set; }
+    bool PreAuthorize { get; set; }
+}
+
+public class Order : IOrder
 {
 
     [JsonPropertyName("order_id")]
@@ -47,7 +58,7 @@ public class Order
     public bool PreAuthorize { get; set; }
 
     [JsonPropertyName("created_at")]
-    public ConektaDatetime created_at { get; set; }
+    public ConektaDatetime CreatedAt { get; set; }
 
     [JsonPropertyName("updated_at")]
     public ConektaDatetime UpdtedAt { get; set; }

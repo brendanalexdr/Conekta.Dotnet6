@@ -8,8 +8,7 @@ using System.Text.Json;
 namespace DemoWebApi.Controllers
 {
 
-    // Go here for a sample webhook payload for testing:
-    // https://developers.conekta.com/reference/eventos
+
     public class WebhookController : Controller
     {
         private readonly IConektaRestClient _conektaRestClient;
@@ -39,7 +38,10 @@ namespace DemoWebApi.Controllers
 
         }
 
-        //use this enpoint to consume webhook events from Conekta
+        //use this endpoint to consume webhook events from Conekta
+        // Go here for a sample webhook event payload for testing:
+        // https://developers.conekta.com/reference/eventos
+
         [HttpPost("conekta/events")]
         public async Task<IActionResult> PostWebhookEventsAsync()
         {

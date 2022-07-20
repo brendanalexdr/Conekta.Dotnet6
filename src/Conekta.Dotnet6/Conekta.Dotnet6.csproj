@@ -12,10 +12,10 @@
     <PackageReadmeFile>README-NUGET.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/brendanalexdr/Conekta.Dotnet6</RepositoryUrl>
     <PackageTags>conekta, brendan, alexander, payments</PackageTags>
-    <Version>1.4.3</Version>
+    <Version>1.5.0</Version>
     <FileVersion>1.3.1</FileVersion>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	<PackageReleaseNotes>Changed root namespace to ConektaDotnet6</PackageReleaseNotes>
+	<PackageReleaseNotes>Fixed serialization conflicts</PackageReleaseNotes>
 	<PackageOutputPath>E:/Nuget-Local</PackageOutputPath>
 	  <RootNamespace>ConektaDotnet6</RootNamespace>
   </PropertyGroup>

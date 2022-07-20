@@ -1,9 +1,11 @@
 ﻿using Conekta.Dotnet6.Base;
+using ConektaDotnet6.Models;
 using ConektaDotnet6.Values;
+using System.Text.Json.Serialization;
 
 namespace ConektaDotnet6.Response
 {
-    public class Customer : Models.Customer, IConektaObject
+    public class Customer : ICustomer, IConektaObject
     {
         public string id { get; set; }
 
@@ -15,7 +17,28 @@ namespace ConektaDotnet6.Response
 
         public ConektaDatetime updated_at { get; set; }
 
-        public new ConektaDotnet6.Response.PaymentSources payment_sources { get; set; }
+        public ConektaDatetime created_at { get; set; }
+
+        public Response.PaymentSources payment_sources { get; set; }
+
+        [JsonPropertyName("corporate")]
+        public bool Corporate { get; set; }
+
+        [JsonPropertyName("default_payment_source_id")]
+        public string DefaultPaymentSourceId { get; set; }
+
+        [JsonPropertyName("deleted")]
+        public bool Deleted { get; set; }
+
+        [JsonPropertyName("email")]
+        public string Email { get; set; }
+
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        [JsonPropertyName("phone")]
+        public string Phone { get; set; }
+        
 
         public Models.Customer GetCustomer()
         {
@@ -33,7 +56,7 @@ namespace ConektaDotnet6.Response
                 Phone = this.Phone,
                 Corporate = this.Corporate,
                 PaymentSources = paymentSources.ToArray(),
-                created_at = this.created_at,
+                CreatedAt = this.created_at,
                 DefaultPaymentSourceId = this.DefaultPaymentSourceId,
                 Deleted = this.Deleted
 

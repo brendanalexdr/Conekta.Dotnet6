@@ -3,14 +3,14 @@ using System.Text.Json.Serialization;
 
 namespace ConektaDotnet6.Models;
 
-public class Customer
+public class Customer : ICustomer
 {
 
     [JsonPropertyName("customer_id")]
     public string CustomerId { get; set; }
 
     [JsonPropertyName("created_at")]
-    public ConektaDatetime created_at { get; set; }
+    public ConektaDatetime CreatedAt { get; set; }
 
     [JsonPropertyName("name")]
     public string Name { get; set; }

@@ -29,7 +29,12 @@ public class ConektaApi
         var request = this.GetRestRequest(Method.Get, "orders/" + conektaOrderId);
 
         var response = await this.GetClient().ExecuteAsync(request);
+        if (!response.IsSuccessful)
+        {
+            var ex = new ConektaException(response.ErrorMessage);
+            return Result.Failure<Models.Order, ConektaException>(ex);
 
+        }
         var jsonDoc = ConektaSerializer.ToJsonDocument(response.Content);
         var type = jsonDoc.RootElement.GetProperty("object").ToString();
         if (type == "error")
@@ -49,7 +54,12 @@ public class ConektaApi
         request.AddJsonBody(order);
 
         var response = await this.GetClient().ExecuteAsync(request);
+        if (!response.IsSuccessful)
+        {
+            var ex = new ConektaException(response.ErrorMessage);
+            return Result.Failure<Models.Order, ConektaException>(ex);
 
+        }
         var jsonDoc = ConektaSerializer.ToJsonDocument(response.Content);
         var type = jsonDoc.RootElement.GetProperty("object").ToString();
         if (type == "error")
@@ -71,7 +81,12 @@ public class ConektaApi
         var request = this.GetRestRequest(Method.Get, "customers/" + conektaCustomerId);
 
         var response = await this.GetClient().ExecuteAsync(request);
+        if (!response.IsSuccessful)
+        {
+            var ex = new ConektaException(response.ErrorMessage);
+            return Result.Failure<Models.Customer, ConektaException>(ex);
 
+        }
         var jsonDoc = ConektaSerializer.ToJsonDocument(response.Content);
         var type = jsonDoc.RootElement.GetProperty("object").ToString();
         if (type == "error")
@@ -90,6 +105,13 @@ public class ConektaApi
 
         var request = this.GetRestRequest(Method.Get, "customers");
         var response = await this.GetClient().ExecuteAsync(request);
+        if (!response.IsSuccessful)
+        {
+            var ex = new ConektaException(response.ErrorMessage);
+            return Result.Failure<List<Models.Customer>, ConektaException>(ex);
+
+        }
+
         var jsonDoc = ConektaSerializer.ToJsonDocument(response.Content);
         var type = jsonDoc.RootElement.GetProperty("object").ToString();
         if (type == "error")
@@ -133,6 +155,13 @@ public class ConektaApi
         var request = this.GetRestRequest(Method.Post, "customers");
         request.AddJsonBody(newCust);
         var response = await this.GetClient().ExecuteAsync(request);
+        if (!response.IsSuccessful)
+        {
+            var ex = new ConektaException(response.ErrorMessage);
+            return Result.Failure<Models.Customer, ConektaException>(ex);
+
+        }
+
         var obj = ConektaSerializer.ToJsonDocument(response.Content);
         var type = obj.RootElement.GetProperty("object").ToString();
         if (type == "error")
@@ -151,6 +180,12 @@ public class ConektaApi
 
         var request = this.GetRestRequest(Method.Delete, $"customers/{conektaCustomerId}");
         var response = await this.GetClient().ExecuteAsync(request);
+        if (!response.IsSuccessful)
+        {
+            return Result.Failure(response.ErrorMessage);
+
+        }
+
         var obj = ConektaSerializer.ToJsonDocument(response.Content);
         var type = obj.RootElement.GetProperty("object").ToString();
         if (type == "error")
@@ -168,6 +203,14 @@ public class ConektaApi
         var request = this.GetRestRequest(Method.Post, $"customers/{custId}/payment_sources");
         request.AddJsonBody(paySource);
         var response = await this.GetClient().ExecuteAsync(request);
+        if (!response.IsSuccessful)
+        {
+            var ex = new ConektaException(response.ErrorMessage);
+            return Result.Failure<Models.PaymentSource, ConektaException>(ex);
+
+        }
+
+
         var jsonDoc = ConektaSerializer.ToJsonDocument(response.Content);
         var type = jsonDoc.RootElement.GetProperty("object").ToString();
         if (type == "error")
@@ -196,6 +239,13 @@ public class ConektaApi
         var request = this.GetRestRequest(Method.Post, $"orders/{conektaOrderId}/charges");
         request.AddJsonBody(charge);
         var response = await this.GetClient().ExecuteAsync(request);
+        if (!response.IsSuccessful)
+        {
+            var ex = new ConektaException(response.ErrorMessage);
+            return Result.Failure<Models.Charge, ConektaException>(ex);
+
+        }
+
         var jsonDoc = ConektaSerializer.ToJsonDocument(response.Content);
         var type = jsonDoc.RootElement.GetProperty("object").ToString();
         if (type == "error")
@@ -227,6 +277,12 @@ public class ConektaApi
         var request = this.GetRestRequest(Method.Post, "checkouts");
         request.AddBody(paymentLink);
         var response = await this.GetClient().ExecuteAsync(request);
+        if (!response.IsSuccessful)
+        {
+            var ex = new ConektaException(response.ErrorMessage);
+            return Result.Failure<Models.PaymentLink, ConektaException>(ex);
+
+        }
         var jsonDoc = ConektaSerializer.ToJsonDocument(response.Content);
         var type = jsonDoc.RootElement.GetProperty("object").ToString();
         if (type == "error")
@@ -247,6 +303,12 @@ public class ConektaApi
         var request = this.GetRestRequest(Method.Post, "webhooks");
         request.AddBody(webhook);
         var response = await this.GetClient().ExecuteAsync(request);
+        if (!response.IsSuccessful)
+        {
+
+            return Result.Failure(response.ErrorMessage);
+
+        }
         var jsonDoc = ConektaSerializer.ToJsonDocument(response.Content);
         var type = jsonDoc.RootElement.GetProperty("object").ToString();
         if (type == "error")
