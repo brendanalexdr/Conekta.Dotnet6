@@ -35,8 +35,9 @@ public class ConektaAmount : ValueObject<ConektaAmount>
 
     public decimal ToDecimal()
     {
+        decimal amount = Convert.ToDecimal(Value);
 
-        var decimalValue = Convert.ToDecimal(Value / 100);
+        var decimalValue = Convert.ToDecimal(amount / 100);
 
         return decimalValue;
 
