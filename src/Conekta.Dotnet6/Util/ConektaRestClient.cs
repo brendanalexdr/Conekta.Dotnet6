@@ -9,13 +9,17 @@ namespace ConektaDotnet6;
 
 public class ConektaRestClient : IConektaRestClient
 {
-    private string baseUri = "https://api.conekta.io";
+    private string _baseUrl = "https://api.conekta.io";
     private RestClient _client;
 
-    public ConektaRestClient()
+    public ConektaRestClient(int maxTimeout = 300000)
     {
 
-        var client = new RestClient(baseUri);
+        var client = new RestClient(new RestClientOptions(_baseUrl) { 
+        
+            MaxTimeout = maxTimeout
+
+        });
         client.UseSystemTextJson(new JsonSerializerOptions
         {
             DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
